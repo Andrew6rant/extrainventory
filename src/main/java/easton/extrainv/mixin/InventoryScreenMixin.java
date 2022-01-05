@@ -57,14 +57,20 @@ public abstract class InventoryScreenMixin extends HandledScreen {
         return (buttonWidget) -> {
             this.recipeBook.toggleOpen();
             this.x = this.recipeBook.findLeftEdge(this.width, this.backgroundWidth);
-            ((TexturedButtonWidget)buttonWidget).setPos(this.x + 104, this.height / 2 - 47);
+            //((TexturedButtonWidget)buttonWidget).setPos(this.x + 104, this.height / 2 - 47);
+            ((TexturedButtonWidget)buttonWidget).setPos(this.x + 152, this.height / 2 - 63);
             this.mouseDown = true;
         };
     }
 
     @ModifyConstant(method = "init", constant = @Constant(intValue = 22, ordinal = 0))
-    private int recipeBookPosFix(int og) {
-        return 47;
+    private int recipeBookPosYFix(int og) {
+        return 63;
+        //return 127;
+    }
+    @ModifyConstant(method = "init", constant = @Constant(intValue = 104))
+    private int recipeBookPosXFix(int og) {
+        return 152;
     }
 
 }

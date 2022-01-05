@@ -2,6 +2,7 @@ package easton.extrainv.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
@@ -29,6 +30,11 @@ public abstract class PlayerHandlerMixin extends ScreenHandler {
     @ModifyConstant(method = "<init>", constant = @Constant(intValue = 40))
     private int offhandIndexChange(int og) {
         return og + 18;
+    }
+
+    @ModifyConstant(method = "<init>", constant = @Constant(intValue = 2))
+    private int craftingInputChange(int og) {
+        return og + 1;
     }
 
     @Inject(method = "<init>", at = @At("TAIL"))
